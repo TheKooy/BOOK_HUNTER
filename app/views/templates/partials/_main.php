@@ -4,4 +4,4 @@
 
       <!-- Main content -->
       <?php include_once '../app/views/templates/partials/_main_content.php' ?>
-    </div>
+</div>
