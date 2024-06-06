@@ -3,16 +3,19 @@ namespace App\Models\BooksModel;
 
 use \PDO;
 
-function findAll(PDO $connexion):array {
+function findAll(PDO $connexion, int $limit = 15):array {
 $sql = "    SELECT *, b.id AS bookID, a.id AS authorID, cats.id AS categoryID, cats.name AS categoryName
             FROM books b
             INNER JOIN authors a ON b.author_id = a.id
             INNER JOIN categories cats ON b.category_id = cats.id
             INNER JOIN books_has_tags bht ON bht.book_id = b.id
             ORDER BY b.created_at DESC
-            LIMIT 3;
+            LIMIT :limit;
             ";
-return $connexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+$rs = $connexion->prepare($sql);
+$rs->bindValue(':limit', $limit, PDO::PARAM_INT);
+$rs->execute();
+return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>
 <!-- fait tous bugguer 
