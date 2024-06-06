@@ -9,7 +9,7 @@
             <span
               class="bg-white text-gray-800 px-2 py-1 rounded-md text-sm font-semibold absolute top-2 left-2"
             >
-              Drame
+            <?php echo $book['categoryName']; ?>
             </span>
             <img
               class="w-full h-48 object-cover"
@@ -21,7 +21,7 @@
                 <span
                   class="bg-gray-500 text-white px-3 py-1 rounded-full text-sm font-semibold mr-2"
                 >
-                  #society
+                #bestseller
                 </span>
                 <span
                   class="bg-gray-500 text-white px-3 py-1 rounded-full text-sm font-semibold"
@@ -30,7 +30,7 @@
                 </span>
               </div>
               <h3 class="text-xl font-bold"><?php echo $book['title']; ?></h3>
-              <h4 class="text mb-2 text-gray-400">Author 1</h4>
+              <h4 class="text mb-2 text-gray-400"><?php echo $book['firstname']; ?> <?php echo $book['lastname']; ?></h4>
               <div class="flex items-center mb-2">
                 <span class="text-yellow-500 mr-1">
                   <i class="fas fa-star"></i>
