@@ -17,6 +17,19 @@ $rs->bindValue(':limit', $limit, PDO::PARAM_INT);
 $rs->execute();
 return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function findOneById(PDO $connexion, int $id):array {
+    $sql = "SELECT *, b.id AS bookID, a.firstname AS authorF, a.lastname AS authorL, cats.name AS categoryName
+            FROM books b
+            INNER JOIN authors a ON b.author_id = a.id
+            INNER JOIN categories cats ON b.category_id = cats.id
+            WHERE b.id = :id;
+            ";
+    $rs = $connexion->prepare($sql);
+    $rs->bindValue(':id', $id, PDO::PARAM_INT);
+    $rs->execute();
+    return $rs->fetch(PDO::FETCH_ASSOC);
+    }
 ?>
 <!-- fait tous bugguer 
 dans le select t.name AS tagName 

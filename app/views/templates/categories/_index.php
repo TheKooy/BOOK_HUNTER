@@ -5,7 +5,7 @@
         $categories = \App\Models\CategoriesModel\findAll($connexion);
         foreach ($categories as $category) : ?>
     <li>
-        <a class="text-gray-300 hover:text-white" href="#">
+        <a class="text-gray-300 hover:text-white" href="?catergories">
             <?php echo $category['name'];?>
         </a>
     </li>
